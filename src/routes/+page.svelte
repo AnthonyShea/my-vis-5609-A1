@@ -16,7 +16,9 @@
   </script>
   
   <h1>Anthony's VIS Site</h1>
-  <img src="/FullSizeRender.jpg" width="200px" alt="Profile photo" />
+
+  
+  <img src="https://seatechaquariums.com/wp-content/uploads/2015/01/fish-facts-624x390.jpg" width="200px" alt="Profile photo" />
 
   
   <div>
