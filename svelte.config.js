@@ -3,16 +3,23 @@ import { vitePreprocess } from '@sveltejs/vite-plugin-svelte';
 
 /** @type {import('@sveltejs/kit').Config} */
 const config = {
-	// Consult https://svelte.dev/docs/kit/integrations
-	// for more information about preprocessors
-	preprocess: vitePreprocess(),
-
-	kit: {
-		// adapter-auto only supports some environments, see https://svelte.dev/docs/kit/adapter-auto for a list.
-		// If your environment is not supported, or you settled on a specific environment, switch out the adapter.
-		// See https://svelte.dev/docs/kit/adapters for more information about adapters.
-		adapter: adapter()
-	}
+  preprocess: vitePreprocess(),
+  kit: {
+    adapter: adapter({
+      pages: 'build', // Output directory for static pages
+      assets: 'build', // Output directory for assets
+      fallback: null, // No fallback page (not an SPA)
+      precompress: false // Optional: Compress output files
+    }),
+    prerender: {
+      entries: ['*'] // Prerender all routes
+    },
+    // Optional: If deploying to GitHub Pages with a custom base path
+    // Replace 'my-vis-5609' with your repository name
+    paths: {
+      base: process.env.NODE_ENV === 'production' ? '/my-vis-5609' : ''
+    }
+  }
 };
 
 export default config;
