@@ -10,7 +10,7 @@
   async function loadCsv() {
     try {
       // The CSV should be in your static/ directory
-      const csvUrl = "/my-vis-5609-A1/summer_movies.csv";
+      const csvUrl = "./summer_movies.csv";
 
       const rawMovies = await d3.csv(csvUrl, (row) => {
         const year = +row.year;
