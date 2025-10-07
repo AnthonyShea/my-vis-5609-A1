@@ -7,11 +7,16 @@
 
   let movies: TMovie[] = [];
 
+  console.log('Base URL:', import.meta.env.BASE_URL);
+  console.log('CSV would be fetched from:', '/summer_movies.csv');
+
   async function loadCsv() {
     try {
-      // The CSV should be in your static/ directory
-      const csvUrl = "./summer_movies.csv";
-
+      // Use import.meta.env.BASE_URL for proper path resolution
+      const csvUrl = `${import.meta.env.BASE_URL}summer_movies.csv`;
+      
+      console.log('Fetching CSV from:', csvUrl); // Debug log
+      
       const rawMovies = await d3.csv(csvUrl, (row) => {
         const year = +row.year;
         const runtime = +row.runtime_minutes;
